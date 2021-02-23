@@ -6,6 +6,8 @@ En versjon av Atari Breakout som ble laget i sammenheng med et skoleprosjekt i e
 Aalerud, Elvira
 Kristensen, Anders
 
+filbehandling:
+https://www.youtube.com/watch?v=8gMd0ftWp_Y&ab_channel=BrandonioProductions
 
 ##Innhold
 
