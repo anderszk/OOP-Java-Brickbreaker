@@ -41,10 +41,10 @@ public class gameBoard{
     }
     protected void createBricks(GridPane pane){
         for(int i=0; i < 9; i++){
-            gameBrick brick1 = new gameBrick(1, 70, 25);
-            gameBrick brick2 = new gameBrick(1, 70, 25);
-            gameBrick brick3 = new gameBrick(1, 70, 25);
-            gameBrick brick4 = new gameBrick(1, 70, 25);
+            gameBrick brick1 = new gameBrick(2, 70, 25, 50000);
+            gameBrick brick2 = new gameBrick(2, 70, 25, 30000);
+            gameBrick brick3 = new gameBrick(2, 70, 25,18750);
+            gameBrick brick4 = new gameBrick(2, 70, 25,12500);
 
             brick1.getStyleClass().add("topbrick");
             brick2.getStyleClass().add("middlebrick1");

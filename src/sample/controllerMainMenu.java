@@ -31,14 +31,11 @@ public class controllerMainMenu implements Initializable {
 
     @FXML
     public void toGame(ActionEvent e) throws IOException {
-        controllerGameBoard gameController = new controllerGameBoard();
         Parent root = FXMLLoader.load(getClass().getResource("gameBoard.fxml"));
         Scene gameScene = new Scene(root);
         Stage window = (Stage)((Node)e.getSource()).getScene().getWindow();
         window.setScene(gameScene);
         window.show();
-
-
     }
 
     @FXML

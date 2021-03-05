@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="74f76e0f-955c-49df-bc40-67cc41867883" name="Default Changelist" comment="Merge remote-tracking branch 'origin/master'">
+    <list default="true" id="74f76e0f-955c-49df-bc40-67cc41867883" name="Default Changelist" comment="Delete bestebreakoutenever.zip">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/breakoutGame/gameBrick.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/breakoutGame/gameBrick.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$1.class" afterDir="false" />
@@ -149,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614954367504</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Delete bestebreakoutenever.zip">
+      <created>1614978975681</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1614978975681</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,20 +178,7 @@
     <MESSAGE value="dasd" />
     <MESSAGE value="Add files via upload" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/master'" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/sample/controllerGameBoard.java</url>
-          <line>137</line>
-          <properties class="sample.controllerGameBoard" method="move">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Delete bestebreakoutenever.zip" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete bestebreakoutenever.zip" />
   </component>
 </project>

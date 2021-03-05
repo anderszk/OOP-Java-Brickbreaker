@@ -7,10 +7,16 @@ public class gameBrick extends Rectangle {
 
     private int lifePoints;
     private boolean isDestroyed;
+    private long value;
 
-    public gameBrick(int lifePoints, int width, int height){
+    public gameBrick(int lifePoints, int width, int height, long value){
         super(width, height);
         this.lifePoints = lifePoints;
+        this.value = value;
+    }
+
+    public long getValue(){
+        return this.value;
     }
 
     public void setDestroyed(){
@@ -34,7 +40,7 @@ public class gameBrick extends Rectangle {
             setLifePoints(getLifePoints() - 1);
         }
         else{
-            //removeBrick();
+            setDestroyed();
         }
     }
 

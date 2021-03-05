@@ -47,6 +47,9 @@
 .bottombrick {
     -fx-fill: #a8cf3b;
 }
+.broken {
+    -fx-fill: #0036ff;
+}
 
 .default-color0.chart-bar { -fx-bar-fill: rgb(255, 255, 255); }
 
@@ -82,4 +85,23 @@
     -fx-background-color: white;
     -fx-stroke: white;
     -fx-fill: white;
+}
+
+.failedText{
+    -fx-alignment: center;
+}
+
+.restartButton{
+    -fx-background-color:transparent ;
+    -fx-border-width: 3 3 3 3;
+    -fx-border-color: #FFFFFF;
+    -fx-border-radius: 20px;
+}
+
+.restartButton:hover{
+    -fx-background-color:transparent ;
+    -fx-border-width: 3 3 3 3;
+    -fx-border-color: #FFFFFF;
+    -fx-border-radius: 20px;
+    -fx-opacity: 0.7;
 }
