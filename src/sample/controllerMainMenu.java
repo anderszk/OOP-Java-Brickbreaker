@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -25,6 +26,8 @@ public class controllerMainMenu implements Initializable {
     private AnchorPane rootPane;
     @FXML
     private Button playButton, hiscoreButton, exitButton;
+    @FXML
+    private GridPane gridBrick;
 
     @FXML
     public void toGame(ActionEvent e) throws IOException {

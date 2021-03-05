@@ -77,3 +77,9 @@
     -fx-border-width: 2;
     -fx-border-color: #000000;
 }
+
+.gridPane {
+    -fx-background-color: white;
+    -fx-stroke: white;
+    -fx-fill: white;
+}

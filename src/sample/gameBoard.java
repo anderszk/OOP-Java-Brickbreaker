@@ -1,13 +1,11 @@
 package sample;
 
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import sample.breakoutGame.gameBall;
 import sample.breakoutGame.gameBrick;
 import sample.breakoutGame.gamePaddle;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class gameBoard{
 
@@ -15,14 +13,6 @@ public class gameBoard{
     private int sessionCount = 50;
     private long currentBest = 265389;
     private long score = 0;
-
-    private List<gameBrick> top_brick = new ArrayList<>();
-    private List<gameBrick> middle1_brick = new ArrayList<>();
-    private List<gameBrick> middle2_brick = new ArrayList<>();
-    private List<gameBrick> bottom_brick = new ArrayList<>();
-
-
-
 
     public int getSessionCount(){
         return this.sessionCount;
@@ -45,35 +35,27 @@ public class gameBoard{
         return this.score;
     }
 
+
     protected void createPaddle(AnchorPane pane, gamePaddle pad){
         pane.getChildren().add(pad);
     }
-    protected void createBricks(AnchorPane pane){
+    protected void createBricks(GridPane pane){
+        for(int i=0; i < 9; i++){
+            gameBrick brick1 = new gameBrick(1, 70, 25);
+            gameBrick brick2 = new gameBrick(1, 70, 25);
+            gameBrick brick3 = new gameBrick(1, 70, 25);
+            gameBrick brick4 = new gameBrick(1, 70, 25);
 
-        for(int k=0; k < 9; k++){
-            this.top_brick.add(new gameBrick(1, 70, 25));
-            this.middle1_brick.add(new gameBrick(1, 70, 25));
-            this.middle2_brick.add(new gameBrick(1, 70, 25));
-            this.bottom_brick.add(new gameBrick(1, 70, 25));
-        }
+            brick1.getStyleClass().add("topbrick");
+            brick2.getStyleClass().add("middlebrick1");
+            brick3.getStyleClass().add("middlebrick2");
+            brick4.getStyleClass().add("bottombrick");
 
-        for(int i=0; i < this.top_brick.size(); i++){
-            this.top_brick.get(i).setTranslateX(i*80+49);
-            this.top_brick.get(i).setTranslateY(60);
-            this.middle1_brick.get(i).setTranslateX(i*80+49);
-            this.middle1_brick.get(i).setTranslateY(90);
-            this.middle2_brick.get(i).setTranslateX(i*80+49);
-            this.middle2_brick.get(i).setTranslateY(120);
-            this.bottom_brick.get(i).setTranslateX(i*80+49);
-            this.bottom_brick.get(i).setTranslateY(150);
-            pane.getChildren().add(top_brick.get(i));
-            pane.getChildren().add(middle1_brick.get(i));
-            pane.getChildren().add(middle2_brick.get(i));
-            pane.getChildren().add(bottom_brick.get(i));
-            top_brick.get(i).getStyleClass().add("topbrick");
-            middle1_brick.get(i).getStyleClass().add("middlebrick1");
-            middle2_brick.get(i).getStyleClass().add("middlebrick2");
-            bottom_brick.get(i).getStyleClass().add("bottombrick");
+
+            pane.add(brick1, i, 0);
+            pane.add(brick2, i, 1);
+            pane.add(brick3, i, 2);
+            pane.add(brick4, i, 3);
         }
 
     }

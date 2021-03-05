@@ -5,11 +5,20 @@ import javafx.scene.shape.Rectangle;
 
 public class gameBrick extends Rectangle {
 
-    int lifePoints;
+    private int lifePoints;
+    private boolean isDestroyed;
 
     public gameBrick(int lifePoints, int width, int height){
         super(width, height);
         this.lifePoints = lifePoints;
+    }
+
+    public void setDestroyed(){
+        this.isDestroyed = true;
+    }
+
+    public boolean getDestroyed(){
+        return this.isDestroyed;
     }
 
     public int getLifePoints() {

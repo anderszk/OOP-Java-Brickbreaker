@@ -6,10 +6,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -26,16 +28,18 @@ public class controllerGameBoard implements Initializable {
     private final gamePaddle paddle = new gamePaddle(325, 500, 150, 25, Color.RED);
     private final gameBall ball = new gameBall(12);
     private final gameBrick brick = new gameBrick(1, 70, 25);
-    private gameBoard gb = new gameBoard();
-    private Hiscores hs = new Hiscores();
-    private int xSpeed = 5;
-    private int ySpeed = 5;
+    private final gameBoard gb = new gameBoard();
+    private final Hiscores hs = new Hiscores();
+    private int xSpeed = 6;
+    private int ySpeed = 6;
     private long points;
 
     @FXML
     AnchorPane gamePane;
     @FXML
     Text score;
+    @FXML
+    GridPane gridBrick;
 
     public  AnimationTimer timer = new AnimationTimer() {
         double speed = 0;
@@ -57,14 +61,14 @@ public class controllerGameBoard implements Initializable {
                                     if (paddle.getTranslateX() <= 0) {
                                         speed = 0;
                                     } else {
-                                        speed = -7;
+                                        speed = -8;
                                     }
                                 }
                                 case D -> {
                                     if (paddle.getTranslateX() >= 645) {
                                         speed = 0;
                                     } else {
-                                        speed = 7;
+                                        speed = 8;
                                     }
                                 }
                             }
@@ -72,11 +76,11 @@ public class controllerGameBoard implements Initializable {
                 );
             }
             paddle.setTranslateX(paddle.getTranslateX()+speed);
-            System.out.println(paddle.getTranslateX());
 
     }};
 
     public  AnimationTimer runGame = new AnimationTimer() {
+
         @Override
         public void handle(long now) {
            {
@@ -86,32 +90,40 @@ public class controllerGameBoard implements Initializable {
                     //Må finne en boolsk måte å få den til å quitte ut av loopen  sånn at vi får stoppet timeren
                 }
                 else{
+                    for (int i=0; i < gridBrick.getChildren().size(); i++){
+                        if(new Rectangle(ball.getTranslateX(), ball.getTranslateY(), 12, 12).intersects(gridBrick.getChildren().get(i).getBoundsInParent().getMinX() + 35, gridBrick.getChildren().get(i).getBoundsInParent().getCenterY() + 70, 70, 20) && ((gameBrick)gridBrick.getChildren().get(i)).getDestroyed() != true){
+                            int x = i/4;
+                            int y =  i%4;
+                            ((gameBrick)gridBrick.getChildren().get(i)).setDestroyed();
+                            gridBrick.getChildren().get(i).setVisible(false);
+                            ySpeed = 6;
+                            ball.setTranslateY(ball.getTranslateY() + ySpeed);
+                            gb.updateScore(score, 19000L);
+                        }
+                    }
+
                     if (ball.getTranslateX() < 10){
-                        xSpeed = 5;
+                        xSpeed = 6;
                         ball.setTranslateX(ball.getTranslateX()+xSpeed);
                     }
                     else if(ball.getTranslateX() > 780){
-                        xSpeed = -5;
+                        xSpeed = -6;
                         ball.setTranslateX(ball.getTranslateX()+xSpeed);
                     }
                     else if(ball.getTranslateY() < 10){
-                        ySpeed = 5;
+                        ySpeed = 6;
                         ball.setTranslateY(ball.getTranslateY()+ySpeed);
                     }
 
-                    else if(new Rectangle(ball.getTranslateX(), ball.getTranslateY(), 12, 12).intersects(brick.getTranslateX(),brick.getTranslateY()+2,145, 15)){
-                        ySpeed = 5;
-                        ball.setTranslateY(ball.getTranslateY()+ySpeed);
-                        gb.updateScore(score, 9000);
-                    }
-                    else if(new Rectangle(ball.getTranslateX(), ball.getTranslateY(), 12, 12).intersects(paddle.getTranslateX(), paddle.getTranslateY()+2,145, 15)){
-                        ySpeed = -5;
+                    else if(new Rectangle(ball.getTranslateX(), ball.getTranslateY(), 12, 12).intersects(paddle.getTranslateX()+10, paddle.getTranslateY()+2,145, 15)){
+                        ySpeed = -6;
                         ball.setTranslateY(ball.getTranslateY() + ySpeed);
                     }
                     else{
                         ball.setTranslateY(ball.getTranslateY()+ySpeed);
                         ball.setTranslateX(ball.getTranslateX()+xSpeed);
                     }
+
                 }
             }
         }
@@ -141,12 +153,18 @@ public class controllerGameBoard implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         gb.createPaddle(gamePane, paddle);
-        gb.createBricks(gamePane);
+        gb.createBricks(gridBrick);
         gb.createBall(gamePane, ball);
+        gridBrick.setAlignment(Pos.CENTER);
         paddle.getStyleClass().add("paddle");
         paddle.setArcHeight(40.0);
         paddle.setArcWidth(26.0);
         System.out.println(paddle.getTranslateX());
         runGame.start();
+        System.out.println(gridBrick.getChildren().get(2).getParent().getBoundsInParent());
+        System.out.println(gridBrick.getChildren().get(2).getParent().getBoundsInParent().getMinX());
+        System.out.println(gridBrick.getChildren().get(2).getParent().getBoundsInParent().getMinY());
+
     }
 }
+
