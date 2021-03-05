@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerMainMenu">
+   <children>
+      <ImageView fitHeight="549.0" fitWidth="800.0" pickOnBounds="true">
+         <image>
+            <Image url="@img/games.jpg" />
+         </image>
+         <effect>
+            <BoxBlur iterations="3" />
+         </effect>
+      </ImageView>
+      <Text fill="WHITE" layoutX="323.0" layoutY="532.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© 2020 Sac-IT" textAlignment="CENTER">
+         <font>
+            <Font name="Super Legend Boy" size="12.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="222.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="By: AndersKri9000 and Cashmere_fangirl" textAlignment="CENTER">
+         <font>
+            <Font name="Super Legend Boy" size="12.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="title" fill="WHITE" layoutX="41.0" layoutY="146.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="SCUFFED BREAKOUT" wrappingWidth="718.79541015625">
+         <font>
+            <Font name="Super Legend Boy" size="46.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+      </Text>
+      <Button fx:id="exitButton" layoutX="275.0" layoutY="421.0" mnemonicParsing="false" onAction="#quitApplication" prefHeight="45.0" prefWidth="250.0" style="-fx-border-radius: 20px;" stylesheets="@test1.css" text="Exit" textFill="WHITE">
+         <font>
+            <Font name="Super Legend Boy" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="hiscoreButton" layoutX="275.0" layoutY="352.0" mnemonicParsing="false" onAction="#toHiscores" prefHeight="45.0" prefWidth="250.0" style="-fx-border-radius: 20px;" stylesheets="@test1.css" text="Hiscores" textFill="WHITE">
+         <font>
+            <Font name="Super Legend Boy" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="playButton" layoutX="275.0" layoutY="283.0" mnemonicParsing="false" onAction="#toGame" prefHeight="45.0" prefWidth="250.0" style="-fx-border-radius: 20px;" stylesheets="@test1.css" text="Play" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Super Legend Boy" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
