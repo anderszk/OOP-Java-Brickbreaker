@@ -10,15 +10,22 @@ import sample.breakoutGame.gamePaddle;
 public class gameBoard{
 
     //Må detektere når brukeren trykker på quit eller krysser ut, litt usikker på hvordan man dettekterer den siste.
-    private int sessionCount = 50;
-    private long currentBest = 265389;
+    private int sessionCount;
+    private long currentBest;
     private long score = 0;
 
     public int getSessionCount(){
         return this.sessionCount;
     }
+    public void addSessionCount(){
+        this.sessionCount += 1;
+    }
+
     public long getCurrentBest(){
         return this.currentBest;
+    }
+    public void setCurrentBest(long newBest){
+        this.currentBest = newBest;
     }
 
     public void updateScore(Text score, long points){
@@ -63,11 +70,6 @@ public class gameBoard{
     protected void createBall(AnchorPane pane, gameBall ball){
         pane.getChildren().add(ball);
         ball.getStyleClass().add("ball");
-    }
-
-    public void ballStop(gameBall ball) {
-        ball.setTranslateY(400);
-        ball.setTranslateX(300);
     }
 
 }

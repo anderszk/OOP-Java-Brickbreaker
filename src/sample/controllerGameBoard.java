@@ -202,7 +202,12 @@ public class controllerGameBoard implements Initializable {
     }
 
     @FXML
-    public void resetFinished() {
+    public void resetFinished() throws IOException {
+        hs.writeHS("Anders", String.valueOf(gb.getScore()));
+        if (gb.getCurrentBest() < gb.getScore()){
+            gb.setCurrentBest(gb.getScore());
+        }
+
     }
 
     @FXML
@@ -217,6 +222,10 @@ public class controllerGameBoard implements Initializable {
     public void move (KeyEvent event) throws InterruptedException {
         if (event.getCode() == KeyCode.A ^ event.getCode() == KeyCode.D) {
             timer.start();
+        }
+        else if (event.getCode() == KeyCode.SPACE){
+            System.out.println("Start");
+            gb.addSessionCount();
         }
     }
     @FXML

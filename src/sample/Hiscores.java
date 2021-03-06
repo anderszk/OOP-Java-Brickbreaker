@@ -16,7 +16,6 @@ public class Hiscores extends MainMenu{
 
     private int count;
 
-
     private void sortHighscores(){
         for(int k=0; k < 10; k++){
             int highest = unsortedhsScore.indexOf(Collections.max(unsortedhsScore));
@@ -45,8 +44,7 @@ public class Hiscores extends MainMenu{
     }
 
     public void writeHS(String playername, String highscore) throws IOException {
-        //Må finne den minste verdien og sammenligne sånn
-        // at det ikke blir mer enn 10 highscores i listen på en gang.
+        //Må sammenligne med laveste score så lengden er 10 at all times.
         FileWriter hs = new FileWriter("storedHighScores.txt", true);
         hs.write(playername +":"+highscore+"\n");
         System.out.println("Wrote to system: "+playername+", "+highscore);
