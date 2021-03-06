@@ -3,3 +3,11 @@ Må fikse detection for når bruker krysser ut og oppdatere diverse lister og s�
 Fikse error med at den går tilbake ved spaceclick
 
 Ting resettes: currentBest og sessioncount.
+
+Filbehandling:
+
+Fikse sånn at highscores kun er 10 linjer lang at all timer
+Samme med playerlist
+Filtrere ut de 5 beste scoresa i last5 (graph funksjonen).
+Oppdatere riktig filene riktig
+Fikse stuff

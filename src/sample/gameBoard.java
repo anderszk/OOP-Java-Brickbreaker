@@ -48,7 +48,7 @@ public class gameBoard{
     }
     protected void createBricks(GridPane pane){
         for(int i=0; i < 9; i++){
-            gameBrick brick1 = new gameBrick(2, 70, 25, 50000);
+            gameBrick brick1 = new gameBrick(2, 70, 25, 10000);
             gameBrick brick2 = new gameBrick(2, 70, 25, 30000);
             gameBrick brick3 = new gameBrick(2, 70, 25,18750);
             gameBrick brick4 = new gameBrick(2, 70, 25,12500);
@@ -70,6 +70,7 @@ public class gameBoard{
         pane.getChildren().add(ball);
         ball.getStyleClass().add("ball");
     }
+
 
 }
 

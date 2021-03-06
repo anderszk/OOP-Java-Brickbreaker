@@ -3,17 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="74f76e0f-955c-49df-bc40-67cc41867883" name="Default Changelist" comment="Merge remote-tracking branch 'origin/master'">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/Hiscores.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/Hiscores.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/breakoutGame/gamePaddle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/breakoutGame/gamePaddle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/gameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/gameBoard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/NEED2FIX" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/NEED2FIX" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/breakoutGame/gamePaddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/breakoutGame/gamePaddle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllerGameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllerGameBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/gameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/gameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/test1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/test1.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storedHighScores.txt" beforeDir="false" afterPath="$PROJECT_DIR$/storedHighScores.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storedPlayer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/storedPlayer.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,62 +55,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="breakout" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="breakout" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -130,6 +76,8 @@
       <option name="presentableId" value="Default" />
       <updated>1614952168160</updated>
       <workItem from="1614952170609" duration="1098000" />
+      <workItem from="1615057825233" duration="196000" />
+      <workItem from="1615134745068" duration="5968000" />
     </task>
     <task id="LOCAL-00001" summary="Add files via upload">
       <created>1614954325410</created>
@@ -166,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615052758619</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Merge remote-tracking branch 'origin/master'">
+      <created>1615054429185</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1615054429185</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,7 +151,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/sample/controllerGameBoard.java</url>
-          <line>106</line>
+          <line>119</line>
           <properties method="handle">
             <option name="EMULATED" value="true" />
           </properties>

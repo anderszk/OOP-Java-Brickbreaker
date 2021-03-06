@@ -17,6 +17,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -37,6 +38,7 @@ public class controllerGameBoard implements Initializable {
     private final gameBall ball = new gameBall(12);
     private final gameBoard gb = new gameBoard();
     private final Hiscores hs = new Hiscores();
+    private final Pane finishedPane = new Pane();
     private final Text startText = new Text("Press m to start!");
     private final Text instructions = new Text("<- A, D ->");
     private int xSpeed = 6;
@@ -51,6 +53,18 @@ public class controllerGameBoard implements Initializable {
     @FXML
     GridPane gridBrick;
 
+    private void resetScene(ActionEvent event){
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("gameBoard.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(root);
+        Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
 
     public void blinker(Node element, int duration) {
         FadeTransition fadeTransition = new FadeTransition(Duration.millis(duration), element);
@@ -59,7 +73,6 @@ public class controllerGameBoard implements Initializable {
         fadeTransition.setAutoReverse(true);
         fadeTransition.setCycleCount(Animation.INDEFINITE);
         fadeTransition.play();
-        System.out.println("Blinker on@@@@");
     }
 
     public AnimationTimer timer = new AnimationTimer() {
@@ -114,12 +127,18 @@ public class controllerGameBoard implements Initializable {
 
                 if (finished >= 36) {
                     this.stop();
-                    System.out.println("Youre done!");
+                    resetFinished();
                 }
 
                 if (ball.getTranslateY() > 600) {
                     ball.setTranslateY(600);
                     this.stop();
+                    gb.setCurrentBest(gb.getScore());
+                    try {
+                        hs.writePlayerInfo(gb.getCurrentBest(), 10);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     resetFailed();
 
                 } else {
@@ -184,18 +203,7 @@ public class controllerGameBoard implements Initializable {
         restartButton.setTranslateY(330);
 
         restartButton.setOnAction((event) -> {
-            Parent root = null;
-            try {
-                root = FXMLLoader.load(getClass().getResource("gameBoard.fxml"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Scene scene = new Scene(root);
-            Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
-            window.setScene(scene);
-            window.show();
-
-            System.out.println("SHOULD RESTART");
+            resetScene(event);
         });
 
         blinker(restartButton, 600);
@@ -205,11 +213,92 @@ public class controllerGameBoard implements Initializable {
     }
 
     @FXML
-    public void resetFinished() throws IOException {
-        hs.writeHS("Anders", String.valueOf(gb.getScore()));
+    public void resetFinished() {
+        try {
+            hs.writeHS("Anders", String.valueOf(gb.getScore()));
+            hs.writePlayerInfo(gb.getCurrentBest(), 50);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         if (gb.getCurrentBest() < gb.getScore()){
             gb.setCurrentBest(gb.getScore());
         }
+
+        this.gamePane.getChildren().remove(ball);
+        this.gamePane.getChildren().remove(score);
+        this.gamePane.getChildren().remove(paddle);
+        this.gamePane.getChildren().remove(scoreString);
+        this.gamePane.getChildren().remove(gridBrick);
+
+        this.finishedPane.setPrefWidth(500);
+        this.finishedPane.setPrefHeight(350);
+
+        Button toMenu = new Button("Main Menu");
+        Button toHighscores = new Button("Highscores");
+        Button restart = new Button("Restart");
+        Text finishedMessage = new Text(120, 80, "Well Done!");
+        Text finishedScore = new Text(130, 180, "Score:");
+
+        finishedScore.setText("Score: "+gb.getScore());
+
+        toMenu.setTranslateX(30);
+        toHighscores.setTranslateX(180);
+        restart.setTranslateX(330);
+        this.finishedPane.setTranslateX(150);
+
+        toMenu.setTranslateY(300);
+        toHighscores.setTranslateY(300);
+        restart.setTranslateY(300);
+        this.finishedPane.setTranslateY(100);
+
+        restart.setOnAction((event) -> {
+            resetScene(event);
+        });
+        toMenu.setOnAction((event) -> {
+            Parent root = null;
+            try {
+                root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Scene scene = new Scene(root);
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.show();
+        });
+        toHighscores.setOnAction((event) -> {
+            Parent root = null;
+            try {
+                root = FXMLLoader.load(getClass().getResource("hiscores.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Scene scene = new Scene(root);
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.show();
+        });
+
+
+
+        toMenu.getStyleClass().add("finishedButton");
+        toHighscores.getStyleClass().add("finishedButton");
+        restart.getStyleClass().add("finishedButton");
+        this.finishedPane.getStyleClass().add("finishedPane");
+        finishedMessage.getStyleClass().add("finishedMessage");
+        finishedScore.getStyleClass().add("finishedScore");
+
+        blinker(finishedMessage, 600);
+        blinker(finishedScore, 600);
+
+        this.finishedPane.getChildren().add(toMenu);
+        this.finishedPane.getChildren().add(toHighscores);
+        this.finishedPane.getChildren().add(restart);
+        this.finishedPane.getChildren().add(finishedScore);
+        this.finishedPane.getChildren().add(finishedMessage);
+
+        this.gamePane.getChildren().add(finishedPane);
 
     }
 
@@ -221,6 +310,7 @@ public class controllerGameBoard implements Initializable {
         window.setScene(scene);
         window.show();
     }
+
 
     @FXML
     public void move (KeyEvent event) throws InterruptedException {
