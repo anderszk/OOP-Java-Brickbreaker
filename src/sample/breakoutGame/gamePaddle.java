@@ -10,6 +10,9 @@ public class gamePaddle extends Rectangle{
         super(w, h, color);
         setTranslateX(x);
         setTranslateY(y);
+        setArcHeight(40.0);
+        setArcWidth(26.0);
+        getStyleClass().add("paddle");
     }
 
 

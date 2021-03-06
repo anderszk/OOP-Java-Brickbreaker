@@ -37,6 +37,8 @@ public class controllerGameBoard implements Initializable {
     private final gameBall ball = new gameBall(12);
     private final gameBoard gb = new gameBoard();
     private final Hiscores hs = new Hiscores();
+    private final Text startText = new Text("Press m to start!");
+    private final Text instructions = new Text("<- A, D ->");
     private int xSpeed = 6;
     private int ySpeed = 6;
 
@@ -49,8 +51,9 @@ public class controllerGameBoard implements Initializable {
     @FXML
     GridPane gridBrick;
 
-    public void blinker(Node element) {
-        FadeTransition fadeTransition = new FadeTransition(Duration.millis(400), element);
+
+    public void blinker(Node element, int duration) {
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(duration), element);
         fadeTransition.setFromValue(1.0);
         fadeTransition.setToValue(0.0);
         fadeTransition.setAutoReverse(true);
@@ -124,7 +127,7 @@ public class controllerGameBoard implements Initializable {
                         if (new Rectangle(ball.getTranslateX(), ball.getTranslateY(), 12, 12).intersects(gridBrick.getChildren().get(i).getBoundsInParent().getMinX() + 35, gridBrick.getChildren().get(i).getBoundsInParent().getCenterY() + 80, 70, 20) && ((gameBrick) gridBrick.getChildren().get(i)).getDestroyed() != true) {
 
                             ((gameBrick) gridBrick.getChildren().get(i)).decreaseLifepoints();
-                            blinker(gridBrick.getChildren().get(i));
+                            blinker(gridBrick.getChildren().get(i), 400);
                             if (((gameBrick) gridBrick.getChildren().get(i)).getDestroyed() == true) {
                                 gridBrick.getChildren().get(i).setVisible(false);
                                 gb.updateScore(score, ((gameBrick) gridBrick.getChildren().get(i)).getValue());
@@ -195,7 +198,7 @@ public class controllerGameBoard implements Initializable {
             System.out.println("SHOULD RESTART");
         });
 
-        blinker(restartButton);
+        blinker(restartButton, 600);
 
         gamePane.getChildren().add(failedText);
         gamePane.getChildren().add(restartButton);
@@ -218,34 +221,67 @@ public class controllerGameBoard implements Initializable {
         window.setScene(scene);
         window.show();
     }
+
     @FXML
     public void move (KeyEvent event) throws InterruptedException {
         if (event.getCode() == KeyCode.A ^ event.getCode() == KeyCode.D) {
             timer.start();
         }
-        else if (event.getCode() == KeyCode.SPACE){
-            System.out.println("Start");
+        else if (event.getCode() == KeyCode.M){
             gb.addSessionCount();
+
+            removeStartTexts();
+
+            try {
+                gb.createBall(gamePane, ball);
+                gb.createPaddle(gamePane, paddle);
+            }
+            catch(RuntimeException e) {
+                System.out.println("Ball already on the field!");
+            }
+
+            runGame.start();
         }
     }
     @FXML
     public void stop (KeyEvent event) throws InterruptedException {
         timer.stop();
     }
+
     @FXML
+    private void setStartTexts(){
+        startText.setTranslateX(250);
+        startText.setTranslateY(350);
+        instructions.setTranslateX(300);
+        instructions.setTranslateY(420);
+
+        startText.getStyleClass().add("instructions");
+        instructions.getStyleClass().add("instructions");
+
+        startText.setFont(Font.font("Super Legend Boy", 24));
+        startText.setFill(Color.WHITE);
+        instructions.setFont(Font.font("Super Legend Boy", 24));
+        instructions.setFill(Color.WHITE);
+
+        gamePane.getChildren().add(startText);
+        gamePane.getChildren().add(instructions);
+
+        blinker(startText, 600);
+        blinker(instructions, 600);
+    }
+    @FXML
+    private void removeStartTexts(){
+        gamePane.getChildren().remove(instructions);
+        gamePane.getChildren().remove(startText);
+    }
 
 
 
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle){
-        gb.createPaddle(gamePane, paddle);
         gb.createBricks(gridBrick);
-        gb.createBall(gamePane, ball);
         gridBrick.setAlignment(Pos.CENTER);
-        paddle.getStyleClass().add("paddle");
-        paddle.setArcHeight(40.0);
-        paddle.setArcWidth(26.0);
-        runGame.start();
+        setStartTexts();
     }
 }
 

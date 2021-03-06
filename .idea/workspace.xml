@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74f76e0f-955c-49df-bc40-67cc41867883" name="Default Changelist" comment="Merge remote-tracking branch 'origin/master'">
-      <change afterPath="$PROJECT_DIR$/src/sample/NEED2FIX" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/Hiscores.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/Hiscores.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/breakoutGame/gamePaddle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/breakoutGame/gamePaddle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/test1.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/test1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Hiscores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Hiscores.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/gameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/gameBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/NEED2FIX" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/NEED2FIX" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/breakoutGame/gamePaddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/breakoutGame/gamePaddle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllerGameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllerGameBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/gameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/gameBoard.java" afterDir="false" />
     </list>
@@ -154,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615050676475</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Merge remote-tracking branch 'origin/master'">
+      <created>1615052758619</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1615052758619</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,7 +196,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/sample/controllerGameBoard.java</url>
-          <line>103</line>
+          <line>106</line>
           <properties method="handle">
             <option name="EMULATED" value="true" />
           </properties>

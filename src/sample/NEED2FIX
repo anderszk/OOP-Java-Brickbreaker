@@ -1,3 +1,5 @@
 Må fikse detection for når bruker krysser ut og oppdatere diverse lister og sånn.
 
 Fikse error med at den går tilbake ved spaceclick
+
+Ting resettes: currentBest og sessioncount.

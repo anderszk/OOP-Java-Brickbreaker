@@ -66,7 +66,6 @@ public class gameBoard{
         }
 
     }
-
     protected void createBall(AnchorPane pane, gameBall ball){
         pane.getChildren().add(ball);
         ball.getStyleClass().add("ball");
