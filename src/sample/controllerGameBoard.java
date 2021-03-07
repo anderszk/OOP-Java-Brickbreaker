@@ -152,24 +152,47 @@ public class controllerGameBoard implements Initializable {
                                 gb.updateScore(score, ((gameBrick) gridBrick.getChildren().get(i)).getValue());
                             }
 
-                            ySpeed = 6;
+                            ySpeed = -ySpeed;
                             ball.setTranslateY(ball.getTranslateY() + ySpeed);
                         }
                     }
 
                     if (ball.getTranslateX() < 10) {
-                        xSpeed = 6;
+                        xSpeed = -xSpeed;
                         ball.setTranslateX(ball.getTranslateX() + xSpeed);
                     } else if (ball.getTranslateX() > 780) {
-                        xSpeed = -6;
+                        xSpeed = -xSpeed;
                         ball.setTranslateX(ball.getTranslateX() + xSpeed);
                     } else if (ball.getTranslateY() < 10) {
-                        ySpeed = 6;
+                        ySpeed = -ySpeed;
                         ball.setTranslateY(ball.getTranslateY() + ySpeed);
-                    } else if (new Rectangle(ball.getTranslateX(), ball.getTranslateY(), 12, 12).intersects(paddle.getTranslateX() + 10, paddle.getTranslateY() + 2, 145, 15)) {
-                        ySpeed = -6;
+                    } else if (new Rectangle(ball.getTranslateX(), ball.getTranslateY(), 12, 12).intersects(paddle.getTranslateX() + 15, paddle.getTranslateY() + 2, 35, 15)) {
+                        ySpeed = -3;
+                        xSpeed = -9;
                         ball.setTranslateY(ball.getTranslateY() + ySpeed);
-                    } else {
+                        ball.setTranslateX(ball.getTranslateX() + xSpeed);
+
+                    }
+                    else if (new Rectangle(ball.getTranslateX(), ball.getTranslateY(), 12, 12).intersects(paddle.getTranslateX() + 40, paddle.getTranslateY() + 2, 80, 15)) {
+                        if(Math.abs(xSpeed) != xSpeed){
+                            ySpeed = -8;
+                            xSpeed = -4;
+                        }
+                        else{
+                            xSpeed = 4;
+                            ySpeed = -8;
+                        }
+                        ball.setTranslateY(ball.getTranslateY() + ySpeed);
+                        ball.setTranslateX(ball.getTranslateX() + xSpeed);
+
+                    }
+                    else if (new Rectangle(ball.getTranslateX(), ball.getTranslateY(), 12, 12).intersects(paddle.getTranslateX() + 110, paddle.getTranslateY() + 2, 35, 15)) {
+                        ySpeed = -3;
+                        xSpeed = 9;
+                        ball.setTranslateY(ball.getTranslateY() + ySpeed);
+                        ball.setTranslateX(ball.getTranslateX() + xSpeed);
+                    }
+                    else {
                         ball.setTranslateY(ball.getTranslateY() + ySpeed);
                         ball.setTranslateX(ball.getTranslateX() + xSpeed);
                     }
@@ -247,9 +270,9 @@ public class controllerGameBoard implements Initializable {
         restart.setTranslateX(330);
         this.finishedPane.setTranslateX(150);
 
-        toMenu.setTranslateY(300);
-        toHighscores.setTranslateY(300);
-        restart.setTranslateY(300);
+        toMenu.setTranslateY(285);
+        toHighscores.setTranslateY(285);
+        restart.setTranslateY(285);
         this.finishedPane.setTranslateY(100);
 
         restart.setOnAction((event) -> {
@@ -371,7 +394,8 @@ public class controllerGameBoard implements Initializable {
     public void initialize (URL url, ResourceBundle resourceBundle){
         gb.createBricks(gridBrick);
         gridBrick.setAlignment(Pos.CENTER);
-        setStartTexts();
+        //setStartTexts();
+        resetFinished();
     }
 }
 

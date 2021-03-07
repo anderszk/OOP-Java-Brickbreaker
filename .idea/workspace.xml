@@ -3,9 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="74f76e0f-955c-49df-bc40-67cc41867883" name="Default Changelist" comment="Merge remote-tracking branch 'origin/master'">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/NEED2FIX" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/NEED2FIX" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/NEED2FIX" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/NEED2FIX" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/gameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/gameBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/test1.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/test1.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllerGameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllerGameBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/gameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/gameBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/test1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/test1.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storedHighScores.txt" beforeDir="false" afterPath="$PROJECT_DIR$/storedHighScores.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storedPlayer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/storedPlayer.txt" afterDir="false" />
@@ -40,6 +45,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -55,17 +61,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -77,7 +72,11 @@
       <updated>1614952168160</updated>
       <workItem from="1614952170609" duration="1098000" />
       <workItem from="1615057825233" duration="196000" />
-      <workItem from="1615134745068" duration="5968000" />
+      <workItem from="1615134745068" duration="6215000" />
+      <workItem from="1615145786321" duration="36000" />
+      <workItem from="1615147205297" duration="107000" />
+      <workItem from="1615154319425" duration="443000" />
+      <workItem from="1615203207419" duration="1580000" />
     </task>
     <task id="LOCAL-00001" summary="Add files via upload">
       <created>1614954325410</created>
@@ -121,7 +120,21 @@
       <option name="project" value="LOCAL" />
       <updated>1615054429185</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Merge remote-tracking branch 'origin/master'">
+      <created>1615142019172</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1615142019172</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Merge remote-tracking branch 'origin/master'">
+      <created>1615142031525</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1615142031525</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
