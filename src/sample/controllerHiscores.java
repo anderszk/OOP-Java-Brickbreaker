@@ -7,34 +7,27 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class controllerHiscores implements Initializable {
 
     @FXML
     private AnchorPane hiscorePane;
     @FXML
-    private Pane graphPane;
-    @FXML
     private BarChart last5;
     @FXML
     private NumberAxis y;
     @FXML
-    private Text name1,name2,name3,name4,name5,name6,name7,name8,name9,name10;
-    @FXML
-    private Text score1,score2,score3,score4,score5,score6,score7,score8,score9,score10;
-    @FXML
     private Text playerHiscore, playerGameCount, playerSessions;
 
+    private final Hiscores hs = new Hiscores();
 
     @FXML
     private void toMainMenu() throws IOException {
@@ -43,9 +36,9 @@ public class controllerHiscores implements Initializable {
         hiscorePane.getChildren().setAll(pane);
     }
 
+
     @FXML
     private void setScores(){
-        Hiscores hs = new Hiscores();
         try {
             hs.readHS();
         } catch (IOException e) {
@@ -55,53 +48,50 @@ public class controllerHiscores implements Initializable {
         List<String> names = hs.getHSNames();
         List<Long> scores = hs.getHSScores();
 
-        name1.setText(names.get(0));
-        name2.setText(names.get(1));
-        name3.setText(names.get(2));
-        name4.setText(names.get(3));
-        name5.setText(names.get(4));
-        name6.setText(names.get(5));
-        name7.setText(names.get(6));
-        name8.setText(names.get(7));
-        name9.setText(names.get(8));
-        name10.setText(names.get(9));
+        for (int i =0; i < hs.getHSScores().size(); i++) {
+            Text name = (Text)(hiscorePane.lookup("#name" + (i+1)));
+            Text score = (Text)(hiscorePane.lookup("#score" + (i+1)));
+            name.setText(names.get(i));
+            score.setText(String.valueOf(scores.get(i)));
+        }
 
-
-        score1.setText(String.valueOf(scores.get(0)));
-        score2.setText(String.valueOf(scores.get(1)));
-        score3.setText(String.valueOf(scores.get(2)));
-        score4.setText(String.valueOf(scores.get(3)));
-        score5.setText(String.valueOf(scores.get(4)));
-        score6.setText(String.valueOf(scores.get(5)));
-        score7.setText(String.valueOf(scores.get(6)));
-        score8.setText(String.valueOf(scores.get(7)));
-        score9.setText(String.valueOf(scores.get(8)));
-        score10.setText(String.valueOf(scores.get(9)));
     }
 
     @FXML
     private void setPerson(){
         try {
-            new Hiscores().updatePlayerInfo(playerHiscore, playerGameCount, playerSessions);
+           hs.updatePlayerInfo(playerHiscore, playerGameCount, playerSessions);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    private void setGraph(){
-        //Les av siste scores;
-        List<Long> last5 = new ArrayList<>();
-        last5.add(503467L);
-        last5.add(655590L);
-        last5.add(980832L);
-        last5.add(236452L);
-        last5.add(999432L);
+    private void setGraph() throws FileNotFoundException {
+        List<String> scoresToBeAdded = new ArrayList<>();
+        List<String> allScores = new ArrayList<>();
+
+        File playerfile = new File("storedPlayer.txt");
+        Scanner read = new Scanner(playerfile);
+        while (read.hasNextLine()) {
+            String line = read.nextLine();
+            String[] data = line.split(":");
+            allScores.add(data[0]);
+        }
+        read.close();
+
+        for(int i=allScores.size()-1; i > allScores.size()-6; i--){
+            scoresToBeAdded.add(allScores.get(i));
+        }
+
+        Collections.reverse(scoresToBeAdded);
+
+        System.out.println(scoresToBeAdded.size());
 
         XYChart.Series scores = new XYChart.Series();
 
-        for(int i=0; i < last5.size(); i++){
-            scores.getData().add(new XYChart.Data(String.valueOf(5-i), last5.get(i)));
+        for(int i=0; i < scoresToBeAdded.size(); i++){
+            scores.getData().add(new XYChart.Data(String.valueOf(5-i), Long.parseLong(scoresToBeAdded.get(i))));
         }
 
         this.last5.getData().add(scores);
@@ -115,7 +105,11 @@ public class controllerHiscores implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         setScores();
-        setGraph();
+        try {
+            setGraph();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         setPerson();
     }
 }

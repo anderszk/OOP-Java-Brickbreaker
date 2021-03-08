@@ -46,7 +46,7 @@ public class controllerMainMenu implements Initializable {
 
     @FXML
     public void quitApplication(ActionEvent e){
-        //sende data til filen, også ved detect force quit
+
         Platform.exit();
         System.out.println("Quitting application");
     }

@@ -1,8 +1,12 @@
 package sample;
 
+import javafx.animation.Animation;
+import javafx.animation.FadeTransition;
+import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import sample.breakoutGame.gameBall;
 import sample.breakoutGame.gameBrick;
 import sample.breakoutGame.gamePaddle;
@@ -69,6 +73,16 @@ public class gameBoard{
     protected void createBall(AnchorPane pane, gameBall ball){
         pane.getChildren().add(ball);
         ball.getStyleClass().add("ball");
+    }
+
+
+    public void blinker(Node element, int duration) {
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(duration), element);
+        fadeTransition.setFromValue(1.0);
+        fadeTransition.setToValue(0.0);
+        fadeTransition.setAutoReverse(true);
+        fadeTransition.setCycleCount(Animation.INDEFINITE);
+        fadeTransition.play();
     }
 
 

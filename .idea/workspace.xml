@@ -1,16 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="breakout:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="74f76e0f-955c-49df-bc40-67cc41867883" name="Default Changelist" comment="Merge remote-tracking branch 'origin/master'">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/breakout_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/img/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/gamebg1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/gamebg1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/gamebg1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/oppkolbing anvendt prosjekt 1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/Hiscores.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/Hiscores.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/NEED2FIX" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/NEED2FIX" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/gameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/gameBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/controllerHiscores.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/controllerHiscores.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/gameBoard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/gameBoard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/img/gamebg1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/img/gamebg1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/img/gamebg1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/img/oppkolbing anvendt prosjekt 1.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/test1.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/test1.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Hiscores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Hiscores.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/NEED2FIX" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/NEED2FIX" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/controllerGameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllerGameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllerHiscores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllerHiscores.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllerMainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllerMainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/gameBoard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/gameBoard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/gameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/gameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/img/gamebg1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/img/gamebg1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/img/gamebg1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/img/oppkolbing anvendt prosjekt 1.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/test1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/test1.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storedHighScores.txt" beforeDir="false" afterPath="$PROJECT_DIR$/storedHighScores.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storedPlayer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/storedPlayer.txt" afterDir="false" />
@@ -23,6 +49,17 @@
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
+  <component name="ExportToHTMLSettings">
+    <option name="printScope" value="4" />
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/exportToHTML" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -31,6 +68,14 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1pLAnxgAK7fVxknGUyZbECuxjTn" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -46,9 +91,16 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/sound" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Run" type="Application" factoryName="Application">
@@ -56,7 +108,20 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="sample.MainMenu" />
       <module name="breakout" />
-      <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/Downloads/javafx-sdk-15.0.1/lib --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/Downloads/javafx-sdk-15.0.1/lib --add-modules javafx.controls,javafx.fxml,javafx.media" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -76,7 +141,10 @@
       <workItem from="1615145786321" duration="36000" />
       <workItem from="1615147205297" duration="107000" />
       <workItem from="1615154319425" duration="443000" />
-      <workItem from="1615203207419" duration="1580000" />
+      <workItem from="1615203207419" duration="14083000" />
+      <workItem from="1615239474539" duration="196000" />
+      <workItem from="1615289276465" duration="6420000" />
+      <workItem from="1615304473197" duration="6360000" />
     </task>
     <task id="LOCAL-00001" summary="Add files via upload">
       <created>1614954325410</created>
@@ -134,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615142031525</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Merge remote-tracking branch 'origin/master'">
+      <created>1615205058484</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1615205058484</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,19 +233,5 @@
     <MESSAGE value="Delete bestebreakoutenever.zip" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
     <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/master'" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/sample/controllerGameBoard.java</url>
-          <line>119</line>
-          <properties method="handle">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
