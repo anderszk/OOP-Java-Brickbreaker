@@ -44,11 +44,17 @@ public class Hiscores extends MainMenu{
     }
 
     public void writeHS(String playername, String highscore) throws IOException {
-        //Må sammenligne med laveste score så lengden er 10 at all times.
-        FileWriter hs = new FileWriter("storedHighScores.txt", true);
-        hs.write(playername +":"+highscore+"\n");
-        System.out.println("Wrote to system: "+playername+", "+highscore);
-        hs.close();
+        readHS();
+        if(Long.parseLong(highscore) > getHSScores().get(9)) {
+            FileWriter hs = new FileWriter("storedHighScores.txt", true);
+            hs.write(playername + ":" + highscore + "\n");
+            System.out.println("Wrote to system: " + playername + ", " + highscore);
+            hs.close();
+        }
+        else{
+            System.out.println("Score not top 10, better luck next time :)");
+        }
+
     }
 
     protected void readHS() throws IOException { //Vet ikke hvilken synlighetsmod den skal sa mtp at den blir brukt i main
@@ -57,7 +63,11 @@ public class Hiscores extends MainMenu{
             Scanner reader = new Scanner(file);
             while (reader.hasNextLine()) {
                 String line = reader.nextLine();
+                if (line.isEmpty() == true){
+                    break;
+                }
                 String[] data = line.split(":");
+                System.out.println(data[0]+" "+data[1]);
                 unsortedhsName.add(data[0]); //Bruker index for å skille mellom spillere, viktig å lagre index da.
                 unsortedhsScore.add(Long.parseLong(data[1]));
                 System.out.println("Players: "+unsortedhsName);
@@ -73,7 +83,6 @@ public class Hiscores extends MainMenu{
     }
 
 
-
     public List<String> getHSNames(){
         System.out.println(hsName);
         return this.hsName;
@@ -81,6 +90,7 @@ public class Hiscores extends MainMenu{
     public List<Long> getHSScores(){
         return this.hsScore;
     }
+
 
     //Trenger en variabel som holder den høyeste scores for hver session
     //Trenger en variabel som holder gamecounten for den sessionen
@@ -109,6 +119,5 @@ public class Hiscores extends MainMenu{
         gameCount.setText(String.valueOf(this.count + new gameBoard().getSessionCount()));
         hiscore.setText(String.valueOf(Collections.max(personHiscores)));
     }
-
 
 }

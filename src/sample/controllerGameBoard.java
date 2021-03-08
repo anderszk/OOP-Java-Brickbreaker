@@ -1,9 +1,7 @@
 package sample;
 
 
-import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
-import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,11 +11,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -28,19 +29,26 @@ import sample.breakoutGame.gameBall;
 import sample.breakoutGame.gameBrick;
 import sample.breakoutGame.gamePaddle;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class controllerGameBoard implements Initializable {
+    private final Media losemp3 = new Media(new File("sound/lose.mp3").toURI().toString());
+    private final MediaPlayer mediaPlayer1 = new MediaPlayer(losemp3);
+    private final Media winmp3 = new Media(new File("sound/win.mp3").toURI().toString());
+    private final MediaPlayer mediaPlayer2 = new MediaPlayer(winmp3);
 
     private final gamePaddle paddle = new gamePaddle(325, 500, 150, 25, Color.RED);
     private final gameBall ball = new gameBall(12);
     private final gameBoard gb = new gameBoard();
     private final Hiscores hs = new Hiscores();
     private final Pane finishedPane = new Pane();
+    private Player player = new Player(null);
     private final Text startText = new Text("Press m to start!");
     private final Text instructions = new Text("<- A, D ->");
+    private final TextField username = new TextField();
     private int xSpeed = 6;
     private int ySpeed = 6;
 
@@ -52,29 +60,11 @@ public class controllerGameBoard implements Initializable {
     Text scoreString;
     @FXML
     GridPane gridBrick;
+    @FXML
+    Pane playerPane;
+    
 
-    private void resetScene(ActionEvent event){
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("gameBoard.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Scene scene = new Scene(root);
-        Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();
-    }
-
-    public void blinker(Node element, int duration) {
-        FadeTransition fadeTransition = new FadeTransition(Duration.millis(duration), element);
-        fadeTransition.setFromValue(1.0);
-        fadeTransition.setToValue(0.0);
-        fadeTransition.setAutoReverse(true);
-        fadeTransition.setCycleCount(Animation.INDEFINITE);
-        fadeTransition.play();
-    }
-
+    @FXML
     public AnimationTimer timer = new AnimationTimer() {
         double speed = 0;
 
@@ -112,7 +102,7 @@ public class controllerGameBoard implements Initializable {
 
         }
     };
-
+    @FXML
     public AnimationTimer runGame = new AnimationTimer() {
         public int finished;
 
@@ -120,7 +110,7 @@ public class controllerGameBoard implements Initializable {
         public void handle(long now) {
             {
                 for (int i = 0; i < gridBrick.getChildren().size(); i++) {
-                    if ((gridBrick.getChildren().get(i)).isVisible() == false) {
+                    if (!(gridBrick.getChildren().get(i)).isVisible()) {
                         finished++;
                     }
                 }
@@ -133,23 +123,31 @@ public class controllerGameBoard implements Initializable {
                 if (ball.getTranslateY() > 600) {
                     ball.setTranslateY(600);
                     this.stop();
-                    gb.setCurrentBest(gb.getScore());
                     try {
-                        hs.writePlayerInfo(gb.getCurrentBest(), 10);
+                        hs.writePlayerInfo(player.getBestScore(), player.getCount());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    resetFailed();
+                    try {
+                        resetFailed();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
-                } else {
+                }
+                else {
                     for (int i = 0; i < gridBrick.getChildren().size(); i++) {
-                        if (new Rectangle(ball.getTranslateX(), ball.getTranslateY(), 12, 12).intersects(gridBrick.getChildren().get(i).getBoundsInParent().getMinX() + 35, gridBrick.getChildren().get(i).getBoundsInParent().getCenterY() + 80, 70, 20) && ((gameBrick) gridBrick.getChildren().get(i)).getDestroyed() != true) {
+                        if (new Rectangle(ball.getTranslateX(), ball.getTranslateY(), 12, 12).intersects(gridBrick.getChildren().get(i).getBoundsInParent().getMinX() + 35, gridBrick.getChildren().get(i).getBoundsInParent().getCenterY() + 80, 70, 20) && !((gameBrick) gridBrick.getChildren().get(i)).getDestroyed()) {
+                            Media sound = new Media(new File("sound/hit.m4a").toURI().toString());
+                            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+                            mediaPlayer.play();
 
                             ((gameBrick) gridBrick.getChildren().get(i)).decreaseLifepoints();
-                            blinker(gridBrick.getChildren().get(i), 400);
-                            if (((gameBrick) gridBrick.getChildren().get(i)).getDestroyed() == true) {
+                            gb.blinker(gridBrick.getChildren().get(i), 400);
+                            if (((gameBrick) gridBrick.getChildren().get(i)).getDestroyed()) {
                                 gridBrick.getChildren().get(i).setVisible(false);
                                 gb.updateScore(score, ((gameBrick) gridBrick.getChildren().get(i)).getValue());
+                                player.setScore(player.getScore()+((gameBrick) gridBrick.getChildren().get(i)).getValue());
                             }
 
                             ySpeed = -ySpeed;
@@ -160,13 +158,19 @@ public class controllerGameBoard implements Initializable {
                     if (ball.getTranslateX() < 10) {
                         xSpeed = -xSpeed;
                         ball.setTranslateX(ball.getTranslateX() + xSpeed);
-                    } else if (ball.getTranslateX() > 780) {
+                    }
+                    else if (ball.getTranslateX() > 780) {
                         xSpeed = -xSpeed;
                         ball.setTranslateX(ball.getTranslateX() + xSpeed);
-                    } else if (ball.getTranslateY() < 10) {
+                    }
+                    else if (ball.getTranslateY() < 10) {
                         ySpeed = -ySpeed;
                         ball.setTranslateY(ball.getTranslateY() + ySpeed);
-                    } else if (new Rectangle(ball.getTranslateX(), ball.getTranslateY(), 12, 12).intersects(paddle.getTranslateX() + 15, paddle.getTranslateY() + 2, 35, 15)) {
+                    }
+                    else if (new Rectangle(ball.getTranslateX(), ball.getTranslateY(), 12, 12).intersects(paddle.getTranslateX() + 15, paddle.getTranslateY() + 2, 35, 15)) {
+                        Media sound = new Media(new File("sound/boink.m4a").toURI().toString());
+                        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+                        mediaPlayer.play();
                         ySpeed = -3;
                         xSpeed = -9;
                         ball.setTranslateY(ball.getTranslateY() + ySpeed);
@@ -174,6 +178,9 @@ public class controllerGameBoard implements Initializable {
 
                     }
                     else if (new Rectangle(ball.getTranslateX(), ball.getTranslateY(), 12, 12).intersects(paddle.getTranslateX() + 40, paddle.getTranslateY() + 2, 80, 15)) {
+                        Media sound = new Media(new File("sound/boink.m4a").toURI().toString());
+                        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+                        mediaPlayer.play();
                         if(Math.abs(xSpeed) != xSpeed){
                             ySpeed = -8;
                             xSpeed = -4;
@@ -187,6 +194,9 @@ public class controllerGameBoard implements Initializable {
 
                     }
                     else if (new Rectangle(ball.getTranslateX(), ball.getTranslateY(), 12, 12).intersects(paddle.getTranslateX() + 110, paddle.getTranslateY() + 2, 35, 15)) {
+                        Media sound = new Media(new File("sound/boink.m4a").toURI().toString());
+                        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+                        mediaPlayer.play();
                         ySpeed = -3;
                         xSpeed = 9;
                         ball.setTranslateY(ball.getTranslateY() + ySpeed);
@@ -203,8 +213,16 @@ public class controllerGameBoard implements Initializable {
         }
     };
 
+
     @FXML
-    public void resetFailed() {
+    public void resetFailed() throws IOException {
+        mediaPlayer1.setStopTime(Duration.seconds(14));
+        mediaPlayer1.play();
+
+        System.out.println(player.getScore());
+
+        hs.writeHS(player.getUsername(),String.valueOf(player.getScore()));
+
         gamePane.getChildren().remove(gridBrick);
         gamePane.getChildren().remove(score);
         gamePane.getChildren().remove(scoreString);
@@ -225,27 +243,27 @@ public class controllerGameBoard implements Initializable {
         restartButton.setTranslateX(gamePane.getPrefWidth()/2-135);
         restartButton.setTranslateY(330);
 
-        restartButton.setOnAction((event) -> {
+        restartButton.setOnAction(event -> {
             resetScene(event);
+            mediaPlayer1.stop();
         });
 
-        blinker(restartButton, 600);
+        gb.blinker(restartButton, 600);
 
         gamePane.getChildren().add(failedText);
         gamePane.getChildren().add(restartButton);
     }
-
     @FXML
     public void resetFinished() {
+        mediaPlayer2.play();
         try {
-            hs.writeHS("Anders", String.valueOf(gb.getScore()));
-            hs.writePlayerInfo(gb.getCurrentBest(), 50);
+            hs.writeHS(player.getUsername(), String.valueOf(player.getScore()));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        if (gb.getCurrentBest() < gb.getScore()){
-            gb.setCurrentBest(gb.getScore());
+        if (player.getBestScore() < player.getScore()){
+            player.setBestScore(player.getScore());
         }
 
         this.gamePane.getChildren().remove(ball);
@@ -263,7 +281,8 @@ public class controllerGameBoard implements Initializable {
         Text finishedMessage = new Text(120, 80, "Well Done!");
         Text finishedScore = new Text(130, 180, "Score:");
 
-        finishedScore.setText("Score: "+gb.getScore());
+        finishedScore.setText("Score: "+player.getScore());
+        gb.blinker(gamePane, 195);
 
         toMenu.setTranslateX(30);
         toHighscores.setTranslateX(180);
@@ -277,20 +296,24 @@ public class controllerGameBoard implements Initializable {
 
         restart.setOnAction((event) -> {
             resetScene(event);
+            mediaPlayer2.stop();
         });
         toMenu.setOnAction((event) -> {
+            mediaPlayer2.stop();
             Parent root = null;
             try {
                 root = FXMLLoader.load(getClass().getResource("sample.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            assert root != null;
             Scene scene = new Scene(root);
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(scene);
             window.show();
         });
         toHighscores.setOnAction((event) -> {
+            mediaPlayer2.stop();
             Parent root = null;
             try {
                 root = FXMLLoader.load(getClass().getResource("hiscores.fxml"));
@@ -312,8 +335,8 @@ public class controllerGameBoard implements Initializable {
         finishedMessage.getStyleClass().add("finishedMessage");
         finishedScore.getStyleClass().add("finishedScore");
 
-        blinker(finishedMessage, 600);
-        blinker(finishedScore, 600);
+        gb.blinker(finishedMessage, 600);
+        gb.blinker(finishedScore, 600);
 
         this.finishedPane.getChildren().add(toMenu);
         this.finishedPane.getChildren().add(toHighscores);
@@ -324,7 +347,20 @@ public class controllerGameBoard implements Initializable {
         this.gamePane.getChildren().add(finishedPane);
 
     }
-
+    @FXML
+    private void resetScene(ActionEvent event){
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("gameBoard.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        assert root != null;
+        Scene scene = new Scene(root);
+        Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
     @FXML
     private void toMainMenu (ActionEvent e) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -357,9 +393,10 @@ public class controllerGameBoard implements Initializable {
         }
     }
     @FXML
-    public void stop (KeyEvent event) throws InterruptedException {
+    public void stop (KeyEvent event) {
         timer.stop();
     }
+
 
     @FXML
     private void setStartTexts(){
@@ -379,23 +416,54 @@ public class controllerGameBoard implements Initializable {
         gamePane.getChildren().add(startText);
         gamePane.getChildren().add(instructions);
 
-        blinker(startText, 600);
-        blinker(instructions, 600);
+        gb.blinker(startText, 600);
+        gb.blinker(instructions, 600);
     }
     @FXML
     private void removeStartTexts(){
         gamePane.getChildren().remove(instructions);
         gamePane.getChildren().remove(startText);
     }
+    @FXML
+    public void createPlayerPane(){
+        Button startButton = new Button("Start!");
+        Text instructions = new Text(42, 70, "Enter you username:");
+        username.setPromptText("username");
+        playerPane.getStyleClass().add("finishedPane");
+        startButton.setTranslateX(118);
+        startButton.setTranslateY(200);
+        username.setTranslateX(75);
+        username.setTranslateY(120);
+        startButton.getStyleClass().add("startButton");
+        instructions.getStyleClass().add("playerInstructions");
+        username.getStyleClass().add("usernameField");
+        playerPane.getChildren().add(startButton);
+        playerPane.getChildren().add(instructions);
+        playerPane.getChildren().add(username);
+        startButton.setOnAction((event) -> {
+            sendUserName();
+        });
+    }
+    @FXML
+    public void sendUserName(){
+        if (username.getText().isEmpty() != true) {
+            this.player = new Player(username.getText());
+            this.gamePane.getChildren().remove(playerPane);
+            System.out.println(player.getUsername());
+            setStartTexts();
+            gb.createBricks(gridBrick);
+        }
+        else{
+            return;
+        }
+    }
 
-
-
+    
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle){
-        gb.createBricks(gridBrick);
+        //gb.createBricks(gridBrick);
         gridBrick.setAlignment(Pos.CENTER);
-        //setStartTexts();
-        resetFinished();
+        createPlayerPane();
     }
 }
 

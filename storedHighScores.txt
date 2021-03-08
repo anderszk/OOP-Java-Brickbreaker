@@ -6,7 +6,6 @@ Hanne:103765
 Calle:207657
 Gillian:120657
 Daniel:200567
-Fredrikke:158766
+Fredrik:158766
 Benedikte:250656
-Solveig:238323
-
+asdasd:242500

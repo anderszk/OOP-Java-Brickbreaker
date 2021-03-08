@@ -125,8 +125,13 @@
 }
 
 .finishedPane {
-    -fx-background-color: #0f0D22;
     -fx-border-width: 6 6 6 6;
+    -fx-border-color: #FFFFFF;
+    -fx-border-radius: 20px;
+}
+
+.finishedPane {
+    -fx-border-width: 4 4 4 4;
     -fx-border-color: #FFFFFF;
     -fx-border-radius: 20px;
 }
@@ -141,4 +146,36 @@
     -fx-font-family: "Super Legend Boy";
     -fx-fill: WHITE;
     -fx-font-size: 38;
+}
+
+.playerInstructions{
+    -fx-font-family: "Super Legend Boy";
+    -fx-fill: WHITE;
+    -fx-font-size: 20;
+}
+.usernameField{
+    -fx-background-color: transparent;
+    -fx-font-family: "Super Legend Boy";
+    -fx-text-fill: WHITE;
+    -fx-font-size: 16;
+    -fx-border-width: 2 2 2 2;
+    -fx-border-radius: 20px;
+    -fx-border-color: WHITE;
+}
+
+.startButton {
+    -fx-background-color:transparent ;
+    -fx-border-width: 2 2 2 2;
+    -fx-border-color: #FFFFFF;
+    -fx-border-radius: 20px;
+    -fx-pref-height: 30;
+    -fx-pref-width: 120;
+    -fx-font-size: 14;
+    -fx-font-family: "Super Legend Boy";
+    -fx-text-fill: WHITE;
+}
+
+.startButton:hover{
+    -fx-opacity: 0.7;
+    -fx-cursor: hand;
 }
