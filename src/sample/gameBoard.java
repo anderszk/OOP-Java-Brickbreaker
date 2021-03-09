@@ -18,6 +18,10 @@ public class gameBoard{
     private long currentBest;
     private long score = 0;
 
+    /**
+     *Getters and setters for the private fields
+     */
+
     public int getSessionCount(){
         return this.sessionCount;
     }
@@ -47,15 +51,27 @@ public class gameBoard{
     }
 
 
+    /**
+     *Creates the paddle in the selected gamepane
+     *
+     * @param pane the pane the paddle is being added to
+     * @param pad the paddle that is going to be added
+     */
     protected void createPaddle(AnchorPane pane, gamePaddle pad){
         pane.getChildren().add(pad);
     }
+
+    /**
+     * Creates the bricks in the gameboard
+     *
+     * @param pane the pane the bricks should be added to
+     */
     protected void createBricks(GridPane pane){
         for(int i=0; i < 9; i++){
-            gameBrick brick1 = new gameBrick(2, 70, 25, 10000);
+            gameBrick brick1 = new gameBrick(2, 70, 25, 50000);
             gameBrick brick2 = new gameBrick(2, 70, 25, 30000);
             gameBrick brick3 = new gameBrick(2, 70, 25,18750);
-            gameBrick brick4 = new gameBrick(2, 70, 25,12500);
+            gameBrick brick4 = new gameBrick(2, 70, 25,85000);
 
             brick1.getStyleClass().add("topbrick");
             brick2.getStyleClass().add("middlebrick1");
@@ -70,12 +86,25 @@ public class gameBoard{
         }
 
     }
+
+    /**
+     * Creates the ball
+     *
+     * @param pane the pane the ball should be added to
+     * @param ball the ball that is being added
+     */
     protected void createBall(AnchorPane pane, gameBall ball){
         pane.getChildren().add(ball);
         ball.getStyleClass().add("ball");
     }
 
 
+    /**
+     * Blinks the selected node in with x-milliseconds delay
+     *
+     * @param element the node that should blink
+     * @param duration the delay between each blink in millis
+     */
     public void blinker(Node element, int duration) {
         FadeTransition fadeTransition = new FadeTransition(Duration.millis(duration), element);
         fadeTransition.setFromValue(1.0);

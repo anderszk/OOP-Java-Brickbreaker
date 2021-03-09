@@ -7,7 +7,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74f76e0f-955c-49df-bc40-67cc41867883" name="Default Changelist" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;out/production/breakout/sample/NEED2FIX">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/Hiscores.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/Hiscores.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/MainMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/controllerGameBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/controllerMainMenu.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/gameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/gameBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/gameBoard.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/breakout/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/breakout/sample/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Hiscores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Hiscores.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/breakoutGame/gameBall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/breakoutGame/gameBall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/breakoutGame/gameBrick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/breakoutGame/gameBrick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/breakoutGame/gamePaddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/breakoutGame/gamePaddle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllerGameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllerGameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllerHiscores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllerHiscores.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controllerMainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controllerApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/gameBoard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/app.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/gameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/gameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storedHighScores.txt" beforeDir="false" afterPath="$PROJECT_DIR$/storedHighScores.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storedPlayer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/storedPlayer.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +83,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -74,22 +96,20 @@
     <configuration name="Run" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-15" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="sample.MainMenu" />
+      <option name="MAIN_CLASS_NAME" value="sample.App" />
       <module name="breakout" />
       <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/Downloads/javafx-sdk-15.0.1/lib --add-modules javafx.controls,javafx.fxml,javafx.media" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -112,7 +132,11 @@
       <workItem from="1615203207419" duration="14083000" />
       <workItem from="1615239474539" duration="196000" />
       <workItem from="1615289276465" duration="6420000" />
-      <workItem from="1615304473197" duration="6476000" />
+      <workItem from="1615304473197" duration="7211000" />
+      <workItem from="1615384835796" duration="4932000" />
+      <workItem from="1615402136521" duration="1393000" />
+      <workItem from="1615471129890" duration="104000" />
+      <workItem from="1615490309740" duration="2376000" />
     </task>
     <task id="LOCAL-00001" summary="Add files via upload">
       <created>1614954325410</created>
@@ -184,7 +208,28 @@
       <option name="project" value="LOCAL" />
       <updated>1615312601975</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;out/production/breakout/sample/NEED2FIX">
+      <created>1615312930991</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1615312930991</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;out/production/breakout/sample/NEED2FIX">
+      <created>1615312967411</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1615312967411</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;out/production/breakout/sample/NEED2FIX">
+      <created>1615312980179</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1615312980179</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

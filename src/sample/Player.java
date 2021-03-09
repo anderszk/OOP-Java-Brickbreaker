@@ -6,9 +6,19 @@ public class Player {
     private long bestScore;
     private int count;
 
+    /**
+     *Creates an instance of a player when entering the name
+     *
+     * @param username The username of the player
+     */
     public Player(String username){
         this.username = username;
     }
+
+
+    /**
+     * Getters and setters
+     */
 
     public String getUsername() {
         return this.username;

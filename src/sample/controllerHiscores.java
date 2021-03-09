@@ -29,6 +29,11 @@ public class controllerHiscores implements Initializable {
 
     private final Hiscores hs = new Hiscores();
 
+    /**
+     * Redirects user back to main menu
+     *
+     * @throws IOException
+     */
     @FXML
     private void toMainMenu() throws IOException {
         System.out.println("To main menu");
@@ -36,7 +41,9 @@ public class controllerHiscores implements Initializable {
         hiscorePane.getChildren().setAll(pane);
     }
 
-
+    /**
+     * Sets the data to the Text-elements in the .FXML-files
+     */
     @FXML
     private void setScores(){
         try {
@@ -56,7 +63,6 @@ public class controllerHiscores implements Initializable {
         }
 
     }
-
     @FXML
     private void setPerson(){
         try {
@@ -65,7 +71,6 @@ public class controllerHiscores implements Initializable {
             e.printStackTrace();
         }
     }
-
     @FXML
     private void setGraph() throws FileNotFoundException {
         List<String> scoresToBeAdded = new ArrayList<>();

@@ -9,5 +9,6 @@
 143750:10
 81250:10
 12500:10
-0:0
+
+Java -jar --module-path /Users/AndersKri/Downloads/javafx-sdk-15.0.1 --add-modules=javafx.controls,javafx.fxml /Users/AndersKri/Documents/breakout.jar
 0:0

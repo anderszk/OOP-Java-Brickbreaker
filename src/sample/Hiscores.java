@@ -6,16 +6,19 @@ import javafx.scene.text.Text;
 import java.io.*;
 import java.util.*;
 
-public class Hiscores extends MainMenu{
+public class Hiscores {
 
-    private List<String> unsortedhsName = new ArrayList<>(); //String-objekter eller highscore-objekter?
-    private List<Long> unsortedhsScore = new ArrayList<>();
-    private List<String> hsName = new ArrayList<>(); //String-objekter eller highscore-objekter?
-    private List<Long> hsScore = new ArrayList<>();
-    private List<Long> personHiscores = new ArrayList<>(); //Inneholder høyeste highscore for hver session.
+    private final List<String> unsortedhsName = new ArrayList<>(); //String-objekter eller highscore-objekter?
+    private final List<Long> unsortedhsScore = new ArrayList<>();
+    private final List<String> hsName = new ArrayList<>(); //String-objekter eller highscore-objekter?
+    private final List<Long> hsScore = new ArrayList<>();
+    private final List<Long> personHiscores = new ArrayList<>(); //Inneholder høyeste highscore for hver session.
 
     private int count;
 
+    /**
+     * Sort the lists from highest-lowest and sorts the index of the names accordingly
+     */
     private void sortHighscores(){
         for(int k=0; k < 10; k++){
             int highest = unsortedhsScore.indexOf(Collections.max(unsortedhsScore));
@@ -28,6 +31,11 @@ public class Hiscores extends MainMenu{
         }
     }
 
+    /**
+     * Making the storefile for top10 highscores and player, will do nothing if files already exists
+     *
+     * @throws IOException
+     */
     protected void makeFiles() throws IOException {
         File hsFile = new File("storedHighScores.txt");
         File playerFile = new File("storedPlayer.txt");
@@ -43,11 +51,40 @@ public class Hiscores extends MainMenu{
         }
     }
 
+    /**
+     * Writes to the highscore file
+     *
+     * @param playername The name of the player
+     * @param highscore The highscore of the player
+     * @throws IOException
+     */
     public void writeHS(String playername, String highscore) throws IOException {
+
         readHS();
         if(Long.parseLong(highscore) > getHSScores().get(9)) {
+            List<Long> writeThisScores = new ArrayList<>();
+            List<String> writeThisNames = new ArrayList<>();
+
+            this.hsScore.remove(9);
+            this.hsScore.add(Long.parseLong(highscore));
+            this.hsName.remove(9);
+            this.hsName.add(playername);
+            PrintWriter writer = new PrintWriter("storedHighScores.txt");
+            writer.print("");
+            writer.close();
             FileWriter hs = new FileWriter("storedHighScores.txt", true);
-            hs.write(playername + ":" + highscore + "\n");
+            hs.flush();
+            for (int i=0; i < 10; i++){
+                int highest = hsScore.indexOf(Collections.max(hsScore));
+
+                writeThisScores.add(hsScore.get(highest));
+                writeThisNames.add(hsName.get(highest));
+
+                hsScore.remove(highest);
+                hsName.remove(highest);
+
+                hs.write(writeThisNames.get(i)+":"+writeThisScores.get(i)+"\n");
+            }
             System.out.println("Wrote to system: " + playername + ", " + highscore);
             hs.close();
         }
@@ -57,6 +94,11 @@ public class Hiscores extends MainMenu{
 
     }
 
+    /**
+     * Reads from the highscore file and adds to the lists so its retrievable
+     *
+     * @throws IOException
+     */
     protected void readHS() throws IOException { //Vet ikke hvilken synlighetsmod den skal sa mtp at den blir brukt i main
         try {
             File file = new File("storedHighScores.txt");
@@ -83,6 +125,11 @@ public class Hiscores extends MainMenu{
     }
 
 
+    /**
+     * Getters for the names and scores for the highscores
+     *
+     * @return Lists with names and scores
+     */
     public List<String> getHSNames(){
         System.out.println(hsName);
         return this.hsName;
@@ -95,13 +142,27 @@ public class Hiscores extends MainMenu{
     //Trenger en variabel som holder den høyeste scores for hver session
     //Trenger en variabel som holder gamecounten for den sessionen
 
+    /**
+     * Write information the the players store-file
+     *
+     * @param highscore The best highscore for the session
+     * @param gamecount How many games the player played from opening the app to closing it
+     * @throws IOException
+     */
     public void writePlayerInfo(Long highscore, int gamecount) throws IOException { //Fungerer ikke, må finne ny linje.
         FileWriter pi = new FileWriter("storedPlayer.txt", true);
         pi.write(highscore+":"+gamecount+"\n");
-        System.out.println("Wrote to system: "+highscore+":"+gamecount);
         pi.close();
     }
 
+    /**
+     * Updates the selected textelements to show the overall: best highscore, gamecount and gamesessions.
+     *
+     * @param hiscore The best overall highscore
+     * @param gameCount Total games played
+     * @param gameSession Total gamesessions
+     * @throws FileNotFoundException File does not exists
+     */
     protected void updatePlayerInfo(Text hiscore, Text gameCount, Text gameSession) throws FileNotFoundException {
 
         File playerfile = new File("storedPlayer.txt");
