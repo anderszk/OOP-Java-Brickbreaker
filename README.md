@@ -7,7 +7,8 @@ Aalerud, Elvira
 Kristensen, Anders
 
 filbehandling:
-https://www.youtube.com/watch?v=8gMd0ftWp_Y&ab_channel=BrandonioProductions
+storedplayer.txt
+highscoreplayer.txt
 
 ##Innhold
 
